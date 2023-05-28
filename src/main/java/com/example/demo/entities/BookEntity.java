@@ -3,7 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Book", schema = "Library")
+@Table(name = "Book")
 public class BookEntity {
 
     @Id
@@ -18,8 +18,8 @@ public class BookEntity {
     private String author;
 
     @ManyToOne
-    @JoinColumn(name = "ID")
-    private UserEntity userEntity;
+    @JoinColumn(name = "customer_id", referencedColumnName = "ID", nullable = false)
+    private CustomerEntity customerEntity;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class BookEntity {
         this.author = author;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public CustomerEntity getUserEntity() {
+        return customerEntity;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setUserEntity(CustomerEntity customerEntity) {
+        this.customerEntity = customerEntity;
     }
 }

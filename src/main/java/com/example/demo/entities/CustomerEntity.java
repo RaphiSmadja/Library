@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "User", schema = "Library")
-public class UserEntity {
+@Table(name = "Customer")
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class UserEntity {
     @Column(name = "LASTNAME")
     private String lastName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookEntity> bookEntities;
 
     public Long getId() {

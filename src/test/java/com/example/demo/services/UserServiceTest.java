@@ -1,10 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.dto.UserDTO;
-import com.example.demo.entities.UserEntity;
+import com.example.demo.entities.CustomerEntity;
 import com.example.demo.repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,16 +31,16 @@ public class UserServiceTest {
     @Test
     public void getAllUsers() {
         // GIVEN
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(1L);
-        userEntity.setFirstName("firstname");
-        userEntity.setLastName("lastname");
-        userEntity.setBookEntities(new ArrayList<>());
+        CustomerEntity customerEntity = new CustomerEntity();
+        customerEntity.setId(1L);
+        customerEntity.setFirstName("firstname");
+        customerEntity.setLastName("lastname");
+        customerEntity.setBookEntities(new ArrayList<>());
 
         // WHEN
-        when(userRepository.findAll()).thenReturn(List.of(userEntity));
-        UserDTO expected = new ModelMapper().map(userEntity, UserDTO.class);
-        when(modelMapper.map(userEntity, UserDTO.class)).thenReturn(expected);
+        when(userRepository.findAll()).thenReturn(List.of(customerEntity));
+        UserDTO expected = new ModelMapper().map(customerEntity, UserDTO.class);
+        when(modelMapper.map(customerEntity, UserDTO.class)).thenReturn(expected);
         List<UserDTO> actual = userService.getAllUsers();
 
         // THEN
